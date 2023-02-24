@@ -18,7 +18,7 @@ function App() {
       <header className="App-header">
        
   
-          <Button/>
+          <Button handleClick={handleClick}/>
         
 
       </header>
