@@ -10,6 +10,7 @@ function App() {
     .then(
       (result)=> {
         console.log(result)
+        console.log("Hi")
       }
     )
   }
@@ -18,7 +19,7 @@ function App() {
       <header className="App-header">
        
   
-          <Button handleClick={handleClick}/>
+          <Button handleClick={handleClick} />
         
 
       </header>
