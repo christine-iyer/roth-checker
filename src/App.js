@@ -7,7 +7,7 @@ function App() {
 
   
     async function handleClick(){
-      await fetch("http://localhost:3008/api/portfolio")
+      await fetch("http://localhost:3008")
       .then(res=>res.json())
       .then(
         (result)=> {
