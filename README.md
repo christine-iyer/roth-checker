@@ -6,5 +6,21 @@ As this is meant to be a custom app, a client's principal holdings will be hardc
 
 Because I intent to build out user interaction, I want to build the front end in react, however, I would prefer not to make repeated API calls in a single session. Additionally, in order to make customer centric visualizations I need to merge current prices with the principal variables. This is all better handled in the back end. 
 
+![](./processApp.png)
 
+
+
+Above is the process I envision. It starts on the left when the client arrives at the App.js. If the user click the button to enter the site, the app will re-route to the backend route on the server. There, the yahoo api will return the current prices for 16 stocks. This api data will be merged with a hardcoded data set. This data set will be used to render different views of the customer portfolio. I haven't decided if I will return the data to the front end to render visualizations in d3 react, or if I will do it in the backend. 
+
+Currently I'm getting the following errors. 
+
+**/3000**
+
+![](./current%20issue.png)
+
+**/3008**
+
+![](./Screen%20Shot%202023-02-27%20at%201.15.58%20PM.png)
+
+**/3008/api/portfolio**
 
