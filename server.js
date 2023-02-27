@@ -5,7 +5,9 @@ const app = express()
 const router = express.Router()
 app.use(cors())
 app.use(express.urlencoded({ extended: true }))
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname,  'public')))
+
+
 
 app.use((req, res, next) => {
   res.locals.data = {}
@@ -35,9 +37,7 @@ router.route('/api/portfolio').get(async function(req,res) {
      }
      res.json(data.quoteResponse)
    })
-app.get('/api/portfolio', function(req,res){
-     res.send("<h1>Haitch 1</h1>")
-})
+
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
