@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {async function handleClick(){
@@ -7,7 +6,7 @@ function App() {async function handleClick(){
       .then(
         (result)=> {
           console.log(result)
-          console.log("Hi there")
+
 
         }
       )

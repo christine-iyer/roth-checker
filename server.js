@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const path = require('path')
 const app = express()
-const axios = require("axios");
+
 const router = express.Router()
 const hardcodedData = [
   { symbol: "GOOGL", purchasePrice: 143.49,  shares: 100,  principalDate: '12/22/2021'  },
@@ -27,27 +27,28 @@ const hardcodedData = [
 app.use(cors())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname,  'public')))
+app.use('/api/portfolio', require('./routes/api/portfolio'))
 
 
-const options = {
-  method: 'GET',
-  url: 'https://yh-finance.p.rapidapi.com/market/v2/get-quotes',
-  params: {
-    region: 'US',
-    symbols: 'GOOGL,TSLA,AMZN,BA,COIN,AAPL,CVS,GS,MS,NVDA,PYPL,PFE,CRM,SBUX,DIS,VIT,LI'
-  },
-  headers: {
-    'X-RapidAPI-Key': '5e4d0eeb5bmsh1f0574004d6dfb6p160e9fjsnd9a3ae03ad63',
-    'X-RapidAPI-Host': 'yh-finance.p.rapidapi.com'
-  }
-};
+// const options = {
+//   method: 'GET',
+//   url: 'https://yh-finance.p.rapidapi.com/market/v2/get-quotes',
+//   params: {
+//     region: 'US',
+//     symbols: 'GOOGL,TSLA,AMZN,BA,COIN,AAPL,CVS,GS,MS,NVDA,PYPL,PFE,CRM,SBUX,DIS,VIT,LI'
+//   },
+//   headers: {
+//     'X-RapidAPI-Key': '5e4d0eeb5bmsh1f0574004d6dfb6p160e9fjsnd9a3ae03ad63',
+//     'X-RapidAPI-Host': 'yh-finance.p.rapidapi.com'
+//   }
+// };
 
-axios.request(options).then(function (response) {
-	console.log(JSON.stringify(response.data.quoteResponse.result[3].regularMarketPrice
-    ));
-}).catch(function (error) {
-	console.error(error);
-});
+// axios.request(options).then(function (response) {
+// 	console.log(JSON.stringify(response.data.quoteResponse.result.regularMarketPrice
+//     ));
+// }).catch(function (error) {
+// 	console.error(error);
+// });
 
 app.listen(3008, function(){
      console.log('listening on 3008')
