@@ -24,7 +24,7 @@ const hardcodedData = [
 
 ];
 function get(req, res, next) {
-  fetchedData = [];
+
 
   const options = {
     method: 'GET',
@@ -39,10 +39,13 @@ function get(req, res, next) {
     }
   };
   axios.request(options).then(
-
     response => {
+      
+      
       const mergedData = hardcodedData.map((item, i) => Object.assign({}, item, response.data.quoteResponse.result[i]));
       res.json(mergedData)
+      next()
+
     }
   )
     .catch(function (error) {
