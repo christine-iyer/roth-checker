@@ -7,16 +7,16 @@ const hardcodedData = [
   { symbol: "GOOGL", purchasePrice: 143.49, shares: 100, principalDate: '12/22/2021' },
   { symbol: "TSLA", purchasePrice: 242.54, shares: 45, principalDate: '11/27/2020' },
   { symbol: "AMZN", purchasePrice: 160.00, shares: 80, principalDate: '11/27/2020' },
-  { symbol: "BA", purchasePrice: 188.59, shares: 25, principalDate: '12/14/2022'},
+  { symbol: "BA", purchasePrice: 188.59, shares: 25, principalDate: '12/14/2022' },
   { symbol: "COIN", purchasePrice: 257.31, shares: 50, principalDate: '12/28/2021' },
   { symbol: "AAPL", purchasePrice: 114.56, shares: 200, principalDate: ' 11/23/2020' },
-  { symbol: "CVS", purchasePrice: 89.83, shares: 25, principalDate: '1/11/2023'  },
-  { symbol: "GS", purchasePrice: 342.94, shares: 10, principalDate: '1/24/2022'  },
-  { symbol: "MS", purchasePrice: 98.39, shares: 25, principalDate: '12/22/2021'  },
+  { symbol: "CVS", purchasePrice: 89.83, shares: 25, principalDate: '1/11/2023' },
+  { symbol: "GS", purchasePrice: 342.94, shares: 10, principalDate: '1/24/2022' },
+  { symbol: "MS", purchasePrice: 98.39, shares: 25, principalDate: '12/22/2021' },
   { symbol: "NVDA", purchasePrice: 293.75, shares: 5, principalDate: '12/22/2021' },
   { symbol: "PYPL", purchasePrice: 191.57, shares: 10, principalDate: '12/22/2021' },
   { symbol: "PFE", purchasePrice: 47.45, shares: 100, principalDate: '11/10/2022' },
-  { symbol: "CRM", purchasePrice: 160.38, shares: 20, principalDate: '10/21/2022'  },
+  { symbol: "CRM", purchasePrice: 160.38, shares: 20, principalDate: '10/21/2022' },
   { symbol: "SBUX", purchasePrice: 102.99, shares: 25, principalDate: '12/14/2022' },
   { symbol: "DIS", purchasePrice: 151.93, shares: 10, principalDate: '12/22/2021' },
   { symbol: "VTI", purchasePrice: 239.05, shares: 10, principalDate: '12/22/2021', },
@@ -41,8 +41,8 @@ function get(req, res, next) {
   axios.request(options).then(
     response => {
       let results = response.data.quoteResponse.result
-      let holdings = [] 
-      for (let i =0;i<results.length;i++){
+      let holdings = []
+      for (let i = 0; i < results.length; i++) {
         let shareInfo = [
           results[i].symbol,
           results[i].longName,
@@ -51,19 +51,31 @@ function get(req, res, next) {
         ]
         holdings.push(shareInfo)
 
-//         const columns = holdings.map(({ 0: symbol, 1: longName, 2:  fullExchangeName, 3: regularMarketPrice}) => ({
-//   symbol,
-//   longName,
-//   fullExchangeName,
-//   regularMarketPrice
-// }));
+
 
       }
-      
-      const mergedData = hardcodedData.map((item, i) => Object.assign({}, item, holdings[i]));
+
+      let mergedData = hardcodedData
+        .map((item, i) => Object.assign({}, item, holdings[i]))
+        .map(({
+          0: symbol,
+          1: longName,
+          2: fullExchangeName,
+          3: regularMarketPrice,
+          purchasePrice: purchasePrice,
+          shares: shares,
+          principalDate: principalDate }) => ({
+            symbol,
+            longName,
+            fullExchangeName,
+            regularMarketPrice,
+            purchasePrice,
+            shares,
+            principalDate
+          }))
+
       res.json(mergedData)
       next()
-
     }
   )
     .catch(function (error) {
