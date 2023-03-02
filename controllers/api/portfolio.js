@@ -50,6 +50,14 @@ function get(req, res, next) {
           results[i].regularMarketPrice
         ]
         holdings.push(shareInfo)
+
+//         const columns = holdings.map(({ 0: symbol, 1: longName, 2:  fullExchangeName, 3: regularMarketPrice}) => ({
+//   symbol,
+//   longName,
+//   fullExchangeName,
+//   regularMarketPrice
+// }));
+
       }
       
       const mergedData = hardcodedData.map((item, i) => Object.assign({}, item, holdings[i]));
