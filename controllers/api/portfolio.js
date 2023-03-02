@@ -40,19 +40,14 @@ function get(req, res, next) {
   };
   axios.request(options).then(
 
-response =>{
-  const mergedData = [...hardcodedData, ...response.data.quoteResponse.result]
-  res.json(mergedData)
-}
-
-    // function (response) {
-      // console.log(response.data.quoteResponse.result[1].symbol)
-      //   next()
-  // }
+    response => {
+      const mergedData = hardcodedData.map((item, i) => Object.assign({}, item, response.data.quoteResponse.result[i]));
+      res.json(mergedData)
+    }
   )
-  .catch(function (error) {
-    console.error(error);
-  });
+    .catch(function (error) {
+      console.error(error);
+    });
 }
 function index(req, res) {
   try {
