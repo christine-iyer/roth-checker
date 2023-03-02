@@ -29,7 +29,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname,  'public')))
 app.use('/api/portfolio', require('./routes/api/portfolio'))
 app.get('/api/portfolio', (req, res) => {
-  res.render('Home.jsx')
+  res.render('SharesList.jsx')
 })
 
 

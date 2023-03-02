@@ -24,3 +24,24 @@ Currently I'm getting the following errors.
 
 **/3008/api/portfolio**
 
+
+### Test Code 
+
+```    
+
+   // console.log(
+      " Symbol: " 
+      // + JSON.stringify(response.data.quoteResponse.result[1].symbol ) + 
+      // " aka: " + JSON.stringify(response.data.quoteResponse.result[1].longName ) + 
+      // " Exchange Name: " + JSON.stringify(response.data.quoteResponse.result[1].fullExchangeName ) + 
+      // " Today's Price: " + JSON.stringify(response.data.quoteResponse.result[1].regularMarketPrice ) + 
+      // " Today it's worth: " + JSON.stringify(response.data.quoteResponse.result[1].regularMarketPrice*hardcodedData[1].shares) + 
+      // " When I bought it I paid:  " + JSON.stringify(hardcodedData[1].purchasePrice*hardcodedData[1].shares) +
+      // " PercentChange:  " + JSON.stringify((((response.data.quoteResponse.result[1].regularMarketPrice - hardcodedData[1].purchasePrice)/(response.data.quoteResponse.result[1].regularMarketPrice))*11))+
+      // "  Total Change:  " + JSON.stringify((response.data.quoteResponse.result[1].regularMarketPrice-hardcodedData[1].purchasePrice)*hardcodedData[1].shares)
+      //);
+```
+
+
+
+

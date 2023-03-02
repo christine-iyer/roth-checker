@@ -4,9 +4,9 @@ const express = require('express')
 const axios = require("axios");
 
 const hardcodedData = [
-  { symbol: "GOOGL", purchasePrice: 143.49, shares: 100, principalDate: '12/22/2021' , exchangeName: 'NasdaqGS' },
+  { symbol: "GOOGL", purchasePrice: 143.49, shares: 100, principalDate: '12/22/2021', exchangeName: 'NasdaqGS' },
   { symbol: "TSLA", purchasePrice: 242.54, shares: 45, principalDate: '11/27/2020', exchangeName: 'NasdaqGS' },
-  { symbol: "AMZN", purchasePrice: 160.00, shares: 80, principalDate: '11/27/2020', exchangeName: 'NasdaqGS'  },
+  { symbol: "AMZN", purchasePrice: 160.00, shares: 80, principalDate: '11/27/2020', exchangeName: 'NasdaqGS' },
   { symbol: "BA", purchasePrice: 188.59, shares: 25, principalDate: '12/14/2022', exchangeName: 'NYSE' },
   { symbol: "COIN", purchasePrice: 257.31, shares: 50, principalDate: '12/28/2021', exchangeName: 'NasdaqGS' },
   { symbol: "AAPL", purchasePrice: 114.56, shares: 200, principalDate: ' 11/23/2020', exchangeName: 'NasdaqGS' },
@@ -19,11 +19,11 @@ const hardcodedData = [
   { symbol: "CRM", purchasePrice: 160.38, shares: 20, principalDate: '10/21/2022', exchangeName: 'NYSE' },
   { symbol: "SBUX", purchasePrice: 102.99, shares: 25, principalDate: '12/14/2022', exchangeName: 'NasdaqGS' },
   { symbol: "DIS", purchasePrice: 151.93, shares: 10, principalDate: '12/22/2021', exchangeName: 'NYSE' },
-  { symbol: "VTI", purchasePrice: 239.05, shares: 10, principalDate: '12/22/2021', exchangeName:  'NYSEArca'},
-  { symbol: "LI", purchasePrice: 32.53, shares: 225, principalDate: '11/13/2020', exchangeName: 'NasdaqGS'}
+  { symbol: "VTI", purchasePrice: 239.05, shares: 10, principalDate: '12/22/2021', exchangeName: 'NYSEArca' },
+  { symbol: "LI", purchasePrice: 32.53, shares: 225, principalDate: '11/13/2020', exchangeName: 'NasdaqGS' }
 
 ];
-function get(req,res, next){
+function get(req, res, next) {
   fetchedData = [];
 
   const options = {
@@ -38,36 +38,28 @@ function get(req,res, next){
       'X-RapidAPI-Host': 'yh-finance.p.rapidapi.com'
     }
   };
-  
-  axios.request(options).then(function (response) {
+  axios.request(options).then(
 
+response =>{
+  const mergedData = [...hardcodedData, ...response.data.quoteResponse.result]
+  res.json(mergedData)
+}
 
-////////////////////////////////////
-    console.log(
-      " Symbol: " + JSON.stringify(response.data.quoteResponse.result[1].symbol ) + 
-      " aka: " + JSON.stringify(response.data.quoteResponse.result[1].longName ) + 
-      " Exchange Name: " + JSON.stringify(response.data.quoteResponse.result[1].fullExchangeName ) + 
-      " Today's Price: " + JSON.stringify(response.data.quoteResponse.result[1].regularMarketPrice ) + 
-      " Today it's worth: " + JSON.stringify(response.data.quoteResponse.result[1].regularMarketPrice*hardcodedData[1].shares) + 
-      " When I bought it I paid:  " + JSON.stringify(hardcodedData[1].purchasePrice*hardcodedData[1].shares) +
-      " PercentChange:  " + JSON.stringify((((response.data.quoteResponse.result[1].regularMarketPrice - hardcodedData[1].purchasePrice)/(response.data.quoteResponse.result[1].regularMarketPrice))*11))+
-      "  Total Change:  " + JSON.stringify((response.data.quoteResponse.result[1].regularMarketPrice-hardcodedData[1].purchasePrice)*hardcodedData[1].shares)
-      );
-/////////////////////////////////////
-
-
-next()
-   }).catch(function (error) {
+    // function (response) {
+      // console.log(response.data.quoteResponse.result[1].symbol)
+      //   next()
+  // }
+  )
+  .catch(function (error) {
     console.error(error);
   });
-
 }
- function index(req, res) {
+function index(req, res) {
   try {
     const result = response => {
-      const mergedData = [...hardcodedData, ...response]
+      const mergedData = [...hardcodedData, ...fetchedData]
       res.json(mergedData)
-      console.log("merged data: " + JSON.stringify(mergedData[3]) )
+      console.log("merged data: " + mergedData[3])
     }
     return result
   }
@@ -75,7 +67,6 @@ next()
     res.status(400).json({ msg: e.message });
   }
 }
-
 module.exports = {
   get,
   index

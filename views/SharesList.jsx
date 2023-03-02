@@ -8,11 +8,11 @@ class SharesList extends React.Component {
 
         <ul>
           {
-                        fruits.map((fruit) => {
-                          const { symbol, regularMarketPrice, shares, _id } = fruit
+                        fruits.map((share) => {
+                          const { symbol, regularMarketPrice, shares, _id } = share
                           return (
                             <li key={_id}>
-                              <a href={`/fruits/${_id}`}>
+                              <a href={`/portfolio/${_id}`}>
                                 {symbol}
                               </a> is {purchasePrice}
 
