@@ -27,9 +27,11 @@ const hardcodedData = [
 app.use(cors())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname,  'public')))
+app.set('view engine', 'jsx')
+app.engine('jsx', require('jsx-view-engine').createEngine())
 app.use('/api/portfolio', require('./routes/api/portfolio'))
 app.get('/api/portfolio', (req, res) => {
-  res.render('SharesList.jsx')
+  res.render('Today is ' + req.params.purchasePrice+' on ' +req.params.purchaseDate+ ' Today it is worth '+ req.params.regularMarketPrice)
 })
 
 
