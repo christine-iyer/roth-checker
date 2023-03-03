@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 
 const axios = require("axios");
+const { response } = require('express');
 
 const hardcodedData = [
   { symbol: "GOOGL", purchasePrice: 143.49, shares: 100, principalDate: '12/22/2021' },
@@ -24,19 +25,11 @@ const hardcodedData = [
 
 ];
 function get(req, res, next) {
-
-
   const options = {
     method: 'GET',
     url: 'https://yh-finance.p.rapidapi.com/market/v2/get-quotes',
-    params: {
-      region: 'US',
-      symbols: 'GOOGL,TSLA,AMZN,BA,COIN,AAPL,CVS,GS,MS,NVDA,PYPL,PFE,CRM,SBUX,DIS,VTI,LI'
-    },
-    headers: {
-      'X-RapidAPI-Key': '5e4d0eeb5bmsh1f0574004d6dfb6p160e9fjsnd9a3ae03ad63',
-      'X-RapidAPI-Host': 'yh-finance.p.rapidapi.com'
-    }
+    params: { region: 'US', symbols: 'GOOGL,TSLA,AMZN,BA,COIN,AAPL,CVS,GS,MS,NVDA,PYPL,PFE,CRM,SBUX,DIS,VTI,LI' },
+    headers: {'X-RapidAPI-Key': '5e4d0eeb5bmsh1f0574004d6dfb6p160e9fjsnd9a3ae03ad63', 'X-RapidAPI-Host': 'yh-finance.p.rapidapi.com' }
   };
   axios.request(options).then(
     response => {
@@ -50,11 +43,7 @@ function get(req, res, next) {
           results[i].regularMarketPrice
         ]
         holdings.push(shareInfo)
-
-
-
       }
-
       let mergedData = hardcodedData
         .map((item, i) => Object.assign({}, item, holdings[i]))
         .map(({
@@ -73,27 +62,19 @@ function get(req, res, next) {
             shares,
             principalDate
           }))
-
-      res.json(mergedData)
+      return res.json(mergedData)
       next()
     }
   )
     .catch(function (error) {
       console.error(error);
     });
-}
-function index(req, res) {
-  try {
-    const result = response => {
-      const mergedData = [...hardcodedData, ...fetchedData]
-      res.json(mergedData)
-      console.log("merged data: " + mergedData[3])
-    }
-    return result
-  }
-  catch (e) {
-    res.status(400).json({ msg: e.message });
-  }
+
+} 
+
+const index = (req, res,next) => {
+  console.log(res.json(mergedData[6]))
+  next()
 }
 module.exports = {
   get,
