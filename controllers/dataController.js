@@ -72,12 +72,13 @@ function get(req, res, next) {
 
 } 
 
-const index = (req, res,next) => {
-  console.log(res.json(mergedData[6]))
+
+const assetIndex = (req, res,next) => {
+  res.render(res.locals.data)
   next()
 }
 module.exports = {
   get,
-  index
+  assetIndex
 };
 
