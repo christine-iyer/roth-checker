@@ -72,9 +72,20 @@ function get(req, res, next) {
 
 } 
 
+//async function show(req, res) {
+//   try{
+//     const item = await Item.findById(req.params.id);
+//     res.status(200).json(item);
+//   }catch(e){
+//     res.status(400).json({ msg: e.message });
+//   }  
+// }
+
 
 const assetIndex = (req, res,next) => {
-  res.render(res.locals.data)
+  res.render(
+    `${mergedData}`
+    )
   next()
 }
 module.exports = {
