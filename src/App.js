@@ -1,15 +1,20 @@
+import { useState, useEffect } from 'react';
 import './App.css';
+const SERVER_URL="http://localhost:3008/api/portfolio/"
 
 function App() {async function handleClick(){
-      await fetch("http://localhost:3008/api/portfolio/")
+  //const [mergedData, setMergedData] = useState([])
+      await fetch(SERVER_URL)
+
       .then(res=>res.json())
       .then(
         (result)=> {
           console.log(result)
-
-
         }
-      )
+        )
+
+      
+      
     }
   return (
     <div className="App">
