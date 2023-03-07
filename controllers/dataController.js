@@ -1,8 +1,6 @@
 require('dotenv').config()
-const express = require('express')
 
 const axios = require("axios");
-const { response } = require('express');
 
 const hardcodedData = [
   { symbol: "GOOGL", purchasePrice: 143.49, shares: 100, principalDate: '12/22/2021' },
@@ -69,18 +67,7 @@ function get(req, res, next) {
     .catch(function (error) {
       console.error(error);
     });
-
 } 
-
-//async function show(req, res) {
-//   try{
-//     const item = await Item.findById(req.params.id);
-//     res.status(200).json(item);
-//   }catch(e){
-//     res.status(400).json({ msg: e.message });
-//   }  
-// }
-
 
 const assetIndex = (req, res,next) => {
   res.render(
