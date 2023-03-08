@@ -71,11 +71,10 @@ function get(req, res, next) {
     });
 } 
 
-const assetIndex = (req, res,next) => {
-  res.render(
-    `${mergedData}`
+const assetIndex = (req, res) => {
+  res.json(res.locals.data.mergedData
     )
-  next()
+
 }
 module.exports = {
   get,

@@ -9,8 +9,8 @@ function App() {
       .then(res => res.json())
       .then((result) => {
         console.log(result)
-        setMergedData({data: result})
-        console.log(mergedData) 
+        setMergedData(mergedData)
+
       })
 }
 

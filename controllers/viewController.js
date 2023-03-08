@@ -3,8 +3,8 @@ const ASSET_RESOURCE_PATH = '/'
 
 
 const viewController = {
-     portfolioIndex(req, res, next){
-          res.render(res.json("hello"))
+     portfolioIndex(req, res){
+          res.json(res.locals.data.results)
 }
 }
 module.exports = viewController
