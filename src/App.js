@@ -3,19 +3,17 @@ import './App.css';
 const SERVER_URL = "http://localhost:3008/api/portfolio/"
 
 function App() {
-  const [mergedData, setMergedData] = useState([{
-    symbol: '',
-    longName: '',
-    fullExchangeName: '',
-    purchasePrice: '',
-    regularMarketPrice: '',
-    shares: ''
-  }])
+  const [mergedData, setMergedData] = useState({data:[]})
   async function handleClick() {
     await fetch(SERVER_URL)
       .then(res => res.json())
-      .then((result) => { console.log(result) })
-  }
+      .then((result) => {
+        console.log(result)
+        setMergedData({data: result})
+        console.log(mergedData) 
+      })
+}
+
   useEffect(() => {
     setMergedData();
   }, []);
@@ -26,16 +24,7 @@ function App() {
           <button type='submit' onClick={handleClick}>Click</button>
         </div>
         <>
-          {mergedData && mergedData.symbol ? (
-            <div>
-              <h1>
-                {mergedData.regularMarketPrice}/{mergedData.shares}
-              </h1>
-              <h2>{mergedData.symbol}</h2>
-            </div>
-          ) : (
-            <h1>Waiting on Server </h1>
-          )}
+      
         </>
       </header>
     </div>

@@ -9,7 +9,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.set('view engine', 'jsx')
 app.engine('jsx', require('jsx-view-engine').createEngine())
 app.use('/api/portfolio', require('./controllers/routeController'))
-app.get('/portfolio', (req, res) => {
+app.get('/api/portfolio', (req, res) => {
   res.send('<h1>Hi<h1>')
 })
 

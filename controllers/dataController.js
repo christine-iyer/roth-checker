@@ -60,6 +60,8 @@ function get(req, res, next) {
             shares,
             principalDate
           }))
+      console.log("This is merged data");
+      console.log(mergedData);
       return res.json(mergedData)
       next()
     }

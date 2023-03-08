@@ -1,4 +1,4 @@
-const ASSET_RESOURCE_PATH = '/portfolio'
+const ASSET_RESOURCE_PATH = '/'
 
 
 
