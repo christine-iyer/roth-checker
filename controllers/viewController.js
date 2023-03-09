@@ -1,10 +1,5 @@
-const ASSET_RESOURCE_PATH = '/'
-
-
-
-const viewController = {
-     portfolioIndex(req, res){
-          res.json(res.locals.data.results)
+function portfolioIndex (req, res){
+          res.json(res.locals.data.results[4])
 }
-}
-module.exports = viewController
+
+module.exports = portfolioIndex

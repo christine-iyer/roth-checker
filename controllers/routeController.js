@@ -1,7 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const portfolioController = require('./dataController')
-const viewController = require('./viewController')
+const portfolioIndex = require('./viewController')
 
-router.get('/', portfolioController.get, portfolioController.assetIndex)
+
+router.get('/', portfolioController.get, portfolioIndex)
 module.exports = router 
