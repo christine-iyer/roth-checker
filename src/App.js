@@ -1,4 +1,12 @@
 import { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+import Container from 'react-bootstrap/Container';
+import { DndContext, closestCenter } from "@dnd-kit/core";
+import { arrayMove, SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
+import { SortableItem } from './components/SortableItem';
+
+
 
 import './App.css';
 const SERVER_URL = "http://localhost:3008/api/portfolio/"
@@ -49,9 +57,13 @@ useEffect(() => {}, []);
       {
             mergedData && mergedData.length
               ? mergedData.map(data => (
+
                 <li
                   key={data?.symbol}
-                  blog={data}>{data.symbol}</li>
+                  blog={data}>{data.symbol+ ' '+(data.regularMarketPrice* data.shares).toFixed(2)+
+                   '... you paid '+
+                   (data.purchasePrice* data.shares).toFixed(2)+ 
+                  '... a  '+  (((data.regularMarketPrice* data.shares) - (data.purchasePrice* data.shares))/(data.purchasePrice* data.shares)*100).toFixed(2)+'%'}</li>
               ))
               : <>
                 <h2>No Blogs Yet... Add one in the Form Above</h2>
@@ -59,11 +71,40 @@ useEffect(() => {}, []);
         }
     </ul>
     </div>
+
+    <div>
+      
+   
+  
+    </div>
     </div>
       </header>
 
     </div>
   );
+
+  function cardBody (data) {
+
+  }
+
+  function handleDragEnd(event) {
+    console.log("Drag end called");
+    const {active, over} = event;
+    console.log("ACTIVE: " + active.id);
+    console.log("OVER :" + over.id);
+
+    if(active.id !== over.id) {
+      setMergedData((items) => {
+        const activeIndex = items.indexOf(active.id);
+        const overIndex = items.indexOf(over.id);
+        console.log(arrayMove(items, activeIndex, overIndex));
+        return arrayMove(items, activeIndex, overIndex);
+        // items: [2, 3, 1]   0  -> 2
+        // [1, 2, 3] oldIndex: 0 newIndex: 2  -> [2, 3, 1] 
+      });
+      
+    }
+  }
 }
 
 export default App;
