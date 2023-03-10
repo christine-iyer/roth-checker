@@ -1,8 +1,17 @@
 import React from 'react'
 
-export default function TotalGainLoss({results}){
-     const sumPurchase = results.reduce(
-          (results, currentValue) => results?.shares + currentValue.x,
-          0,
-        );
-}
+
+export default function TotalGainLoss({ getTotal, results }) {
+     return (
+       <>
+       <h4>{results}</h4>
+       <button onClick={getTotal}>See total Total</button>
+       </>
+     );
+   }
+
+
+
+
+
+
