@@ -1,5 +1,5 @@
-// import React from 'react'
-// import DisplayItem from './DisplayItem'
+import React from 'react'
+import DisplayItem from './DisplayItem'
 // import Container from 'react-bootstrap/Container'
 // import {
 //   DndContext,
@@ -7,19 +7,19 @@
 // } from '@dnd-kit/core'
 // import { arrayMove, SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 
-// const Display = ({ results, errorMessage }) => {
-//   return (
-//     !results ? errorMessage :
-//       (<section className='section'>
+const Display = ({ results, errorMessage }) => {
+  return (
+    !results ? errorMessage :
+      (<section className='section'>
 
-//         {results.map((result) => (
-//           <DisplayItem
-//             key={result.symbol}
-//             result={result} />
-//         ))}
-//       </section>)
+        {results.map((result) => (
+          <DisplayItem
+            key={result?.symbol}
+            result={result} />
+        ))}
+      </section>)
 
-//   )
-// }
+  )
+}
 
-// export default Display
+export default Display

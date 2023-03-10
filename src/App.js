@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import Container from 'react-bootstrap/Container';
+// import Container from 'react-bootstrap/Container';
 import { DndContext, closestCenter } from "@dnd-kit/core";
 import { arrayMove, SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { SortableItem } from './components/SortableItem';
-
+import Display from './components/Display';
 
 
 import './App.css';
@@ -68,11 +68,14 @@ useEffect(() => {}, []);
               : <>
                 <h2>No Blogs Yet... Add one in the Form Above</h2>
                 </>
+
+                
         }
     </ul>
     </div>
 
     <div>
+      <Display />
       
    
   
