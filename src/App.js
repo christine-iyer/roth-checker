@@ -1,7 +1,10 @@
-import { useState, useEffect } from 'react';
+import { React, useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 import './App.css';
 import SendEmail from './components/SendEmail'
+import ImageFile from './components/ImageFile';
 
 import './App.css';
 const SERVER_URL = "http://localhost:3008/api/portfolio/"
@@ -9,6 +12,14 @@ const SERVER_URL = "http://localhost:3008/api/portfolio/"
 function App() {
   const [mergedData, setMergedData] = useState([])
   const [errorMessage, setErrorMessage] = useState("");
+  const [images, setImages] = useState([]);
+  const maxNumber = 69;
+
+  const onChange = (imageList, addUpdateIndex) => {
+    // data for submit
+    console.log(imageList, addUpdateIndex);
+    setImages(imageList);
+    };
 
   const getMergedData = async () => {
     try {
@@ -52,18 +63,17 @@ function App() {
             </ul>
           </div>
           <div>
-            <a href="mailto:edithbird5@gmail.com">Click to Send an Email</a>
+        
             <SendEmail />
+            <ImageFile images={images}/>
+            
+
           </div>
         </div>
       </header>
 
     </div>
   );
-
-  function cardBody(data) {
-
-  }
 
 
 }
