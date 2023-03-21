@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 import './App.css';
+import FormTextExample from './components/FormTextExample';
 import SendEmail from './components/SendEmail'
 import ImageFile from './components/ImageFile';
 
@@ -65,10 +66,11 @@ function App() {
           <div>
         
             <SendEmail />
+            <br />
+            <FormTextExample />
+            <br />
             <ImageFile images={images}/>
-            
-
-          </div>
+            </div>
         </div>
       </header>
 
