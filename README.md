@@ -1,3 +1,13 @@
+### Plan
+
+
+| Element      | Eval |MicroTasks|
+| :---        |    :----    |        :--- |
+|Stocks   | This display, accessed by a button, is essentially a table of the 17 stocks in this portfolio. If the data were displayed as a table, it would be easier to understand.           |<ul>&#9744;format numbers and prices <br> &#9744;P & L Column<br> &#9744;Total percent<br> &#9744;Total P&L<br></ul>    |
+| Email      | I tested this email functionality and it appears to be working fine. There is a second set of apparent email input fields without functionality        |<ul>&#9744;Delete second set of email inout fields <br> &#9744;Verify that there are no negative email repercussions starting 9/7/2023</ul>     |
+| Photo   | My justification for keeping this functionality is that it allow the user to upload multiple photos, using an array of images. I would like to expand this functionality to save the array of generated urls (cloudinary) to a database (mongoose) |<ul>&#9744;Save the array of urls <br> &#9744;Save url array to the mongo database.</ul> |
+| Functionality      | What was supposed to be a roth summary, has become a repository for react functionality I hope to finesse at some point in the near future.     |<ul>&#9744;Item one <br> &#9744;Item two<br> &#9744;Item three</ul> |
+
 # Let's just take a step back and look at where we are and where we want to go
 
 The purpose of this app is to build a handy portfolio checker for the person who wants a picture of how selected assets are performing in relation to one another and to the portfolio as a whole. 
