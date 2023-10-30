@@ -52,11 +52,12 @@ function App() {
                   ? mergedData.map(data => (
                     <li
                       key={data?.symbol}
-                      blog={data}>{data.symbol + ' ' + (data.regularMarketPrice * data.shares).toFixed(2) +
-                        '... you paid ' +
-                        (data.purchasePrice * data.shares).toFixed(2) +
-                        '... a  ' + (((data.regularMarketPrice * data.shares) - (data.purchasePrice * data.shares)) / (data.purchasePrice * data.shares) * 100).toFixed(2) + '%'}</li>
-                  ))
+                      blog={data}>
+                        {data.symbol + ' $' + (data.regularMarketPrice * data.shares).toLocaleString() +
+                        ', you paid $' +
+                        (data.purchasePrice * data.shares).toLocaleString() +
+                        ' a  ' + (((data.regularMarketPrice * data.shares) - (data.purchasePrice * data.shares)) / (data.purchasePrice * data.shares) * 100).toLocaleString() + '% , totalling $ ' + ((data.regularMarketPrice * data.shares) - (data.purchasePrice * data.shares)).toFixed(2)}</li>
+                  )) 
                   : <>
                     <h2>No assets to refresh</h2>
                   </>
