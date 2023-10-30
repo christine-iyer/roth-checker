@@ -57,6 +57,7 @@ function App() {
                         ', you paid $' +
                         (data.purchasePrice * data.shares).toLocaleString() +
                         ' a  ' + (((data.regularMarketPrice * data.shares) - (data.purchasePrice * data.shares)) / (data.purchasePrice * data.shares) * 100).toLocaleString() + '% , totalling $ ' + ((data.regularMarketPrice * data.shares) - (data.purchasePrice * data.shares)).toFixed(2)}</li>
+                        
                   )) 
                   : <>
                     <h2>No assets to refresh</h2>

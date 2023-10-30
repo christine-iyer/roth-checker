@@ -8,6 +8,22 @@
 | Photo   | My justification for keeping this functionality is that it allow the user to upload multiple photos, using an array of images. I would like to expand this functionality to save the array of generated urls (cloudinary) to a database (mongoose) |<ul>&#9744;Save the array of urls <br> &#9744;Save url array to the mongo database.</ul> |
 | Functionality      | What was supposed to be a roth summary, has become a repository for react functionality I hope to finesse at some point in the near future.     |<ul>&#9744;Item one <br> &#9744;Item two<br> &#9744;Item three</ul> |
 
+Here is a link to summarising an array. 
+
+```JS
+const data = [
+  { name: "jack", prix: 100 },
+  { name: "helen", prix: 200 },
+  { name: "jack", prix: 300 },
+];
+
+const output = data.reduce((prev, { name, prix }) => {
+  prev[name] = prev[name] ? prev[name] + prix : prix;
+  return prev;
+}, {});
+
+console.log(output);
+```
 # Let's just take a step back and look at where we are and where we want to go
 
 The purpose of this app is to build a handy portfolio checker for the person who wants a picture of how selected assets are performing in relation to one another and to the portfolio as a whole. 
