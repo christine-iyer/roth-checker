@@ -1,11 +1,17 @@
 import { React, useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { DndContext, closestCenter } from '@dnd-kit/core';
+import { arrayMove,SortableContext,
+verticalListSortingStrategy,
+} from '@dnd-kit/sortable';
+import { SortableItem } from './components/SortableItem';
+import List from './components/List';
 
-
+import { Card } from 'react-bootstrap';
 import './App.css';
-import FormTextExample from './components/FormTextExample';
-import SendEmail from './components/SendEmail'
-import ImageFile from './components/ImageFile';
+// import FormTextExample from './components/FormTextExample';
+// import SendEmail from './components/SendEmail'
+// import ImageFile from './components/ImageFile';
 
 import './App.css';
 const SERVER_URL = "http://localhost:3008/api/portfolio/"
@@ -13,14 +19,14 @@ const SERVER_URL = "http://localhost:3008/api/portfolio/"
 function App() {
   const [mergedData, setMergedData] = useState([])
   const [errorMessage, setErrorMessage] = useState("");
-  const [images, setImages] = useState([]);
-  const maxNumber = 69;
+  // const [images, setImages] = useState([]);
+  // const maxNumber = 69;
 
-  const onChange = (imageList, addUpdateIndex) => {
-    // data for submit
-    console.log(imageList, addUpdateIndex);
-    setImages(imageList);
-    };
+  // const onChange = (imageList, addUpdateIndex) => {
+  //   // data for submit
+  //   console.log(imageList, addUpdateIndex);
+  //   setImages(imageList);
+  //   };
 
   const getMergedData = async () => {
     try {
@@ -50,13 +56,13 @@ function App() {
               {
                 mergedData && mergedData.length
                   ? mergedData.map(data => (
-                    <li
+                    <Card
                       key={data?.symbol}
                       blog={data}>
                         {data.symbol + ' $' + (data.regularMarketPrice * data.shares).toLocaleString() +
                         ', you paid $' +
                         (data.purchasePrice * data.shares).toLocaleString() +
-                        ' a  ' + (((data.regularMarketPrice * data.shares) - (data.purchasePrice * data.shares)) / (data.purchasePrice * data.shares) * 100).toLocaleString() + '% , totalling $ ' + ((data.regularMarketPrice * data.shares) - (data.purchasePrice * data.shares)).toFixed(2)}</li>
+                        ' a  ' + (((data.regularMarketPrice * data.shares) - (data.purchasePrice * data.shares)) / (data.purchasePrice * data.shares) * 100).toLocaleString() + '% , totalling $ ' + ((data.regularMarketPrice * data.shares) - (data.purchasePrice * data.shares)).toFixed(2)}</Card>
                         
                   )) 
                   : <>
@@ -67,11 +73,11 @@ function App() {
           </div>
           <div>
         
-            <SendEmail />
+            {/* <SendEmail />
             <br />
             <FormTextExample />
             <br />
-            <ImageFile images={images}/>
+            <ImageFile images={images}/> */}
             </div>
         </div>
       </header>
