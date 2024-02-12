@@ -1,11 +1,11 @@
 import React from 'react'
 import DisplayItem from './DisplayItem'
-// import Container from 'react-bootstrap/Container'
-// import {
-//   DndContext,
-//   closestCenter
-// } from '@dnd-kit/core'
-// import { arrayMove, SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
+import Container from 'react-bootstrap/Container'
+import {
+  DndContext,
+  closestCenter
+} from '@dnd-kit/core'
+import { arrayMove, SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 
 const Display = ({ results, errorMessage }) => {
   return (
