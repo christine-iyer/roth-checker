@@ -4,7 +4,8 @@ import './App.css';
 import Container from 'react-bootstrap/Container';
 import { DndContext, closestCenter } from "@dnd-kit/core";
 import { arrayMove, SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
-import { SortableItem } from './components/SortableItem'
+import  {SortableItem}  from './components/SortableItem'
+import Display from './components/Display';
 
 
 
@@ -71,7 +72,9 @@ useEffect(() => {}, []);
                       (data.regularMarketPrice* data.shares) - 
                       (data.purchasePrice* data.shares))/
                       (data.purchasePrice* data.shares) * 100).toFixed(2)
-                      +'%'}</li>
+                      +'%'}
+                      <Display />
+                      </li>
               ))
               : <>
                 <h2>No Blogs Yet... Add one in the Form Above</h2>

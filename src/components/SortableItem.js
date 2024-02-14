@@ -30,11 +30,11 @@ export function SortableItem({ result }) {
                     gap: "1rem"
                 }}
                 >
-                <Card.Body>
+                {/* <Card.Body>
                     <Card.Title>{result.symbol}</Card.Title>
                     <Card.Subtitle>{result.fullExchangeName}</Card.Subtitle>
                     <Card.Text>{result.regularMarketDayHigh}</Card.Text>
-                </Card.Body>
+                </Card.Body> */}
             </Card> 
         </div>
     )
