@@ -30,19 +30,19 @@ function App() {
       // callback(err,null)
     }
   };
-//mergedata=[{symbol, longName, fullExchangeName, principalDate,regularMarketPrice, shares} = {mergedData}] 
+// mergedata=[{symbol, longName, fullExchangeName, principalDate,regularMarketPrice, shares} = {mergedData}] 
   
-  // async function getData() {
-  //   await fetch(SERVER_URL)
-  //     .then(res => res.json())
-  //     .then((results) => {
-  //       console.log(results)
-  //       console.log(results?.[0])
-  //         // results.map(i=>("symbol:"+i.longName)))
-  //       setMergedData([results?.[12]])
-  //       console.log(results?.[12])
-  //     })
-  // }
+  async function getData() {
+    await fetch(SERVER_URL)
+      .then(res => res.json())
+      .then((results) => {
+        console.log(results)
+        console.log(results?.[0])
+          // results.map(i=>("symbol:"+i.longName)))
+        setMergedData([results?.[12]])
+        console.log(results?.[12])
+      })
+  }
   console.log(mergedData.length)
 useEffect(() => {}, []);
   return (
@@ -54,6 +54,7 @@ useEffect(() => {}, []);
         <div>
 
     <div   className='cass'>
+      <Display />
     <ul className='happy'>
       {
             mergedData && mergedData.length
@@ -73,8 +74,11 @@ useEffect(() => {}, []);
                       (data.purchasePrice* data.shares))/
                       (data.purchasePrice* data.shares) * 100).toFixed(2)
                       +'%'}
-                      <Display />
                       </li>
+                      
+
+                      
+                      
               ))
               : <>
                 <h2>No Blogs Yet... Add one in the Form Above</h2>
