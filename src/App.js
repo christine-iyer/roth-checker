@@ -47,7 +47,7 @@ const getMergedData = async () => {
         <div>
           <div className='cass'>
 
-            <ul className='happy'>
+            <div className='happy'>
               {
                 mergedData && mergedData.length
                   ? mergedData.map(data => (
@@ -72,12 +72,13 @@ const getMergedData = async () => {
                     <h2>No Blogs Yet... Add one in the Form Above</h2>
                   </>
               }
-            </ul>
+            </div>
 
 
 
 
             <div>
+              
               {
                 mergedData && mergedData.length ?
                   mergedData.map(data => (
