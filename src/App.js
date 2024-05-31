@@ -51,7 +51,7 @@ const getMergedData = async () => {
               {
                 mergedData && mergedData.length
                   ? mergedData.map(data => (
-                    <li
+                    <p
                       key={data?.symbol}
                       blog={data}>
                       {/* symbol */}
@@ -66,7 +66,7 @@ const getMergedData = async () => {
                             (data.purchasePrice * data.shares)) /
                           (data.purchasePrice * data.shares) * 100).toFixed(2)
                         + '%'}
-                    </li>
+                    </p>
                   ))
                   : <>
                     <h2>No Blogs Yet... Add one in the Form Above</h2>
@@ -84,7 +84,7 @@ const getMergedData = async () => {
                   mergedData.map(data => (
                     <p
                       key={data?.symbol}
-                      blog={data}>
+                      blog={data[16]}>
                       {
                         'Symbol: ' + data.symbol + ' - ' +
                         // 'Price: ' + (data.regularMarketPrice * data.shares).toFixed(2) +
