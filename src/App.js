@@ -5,10 +5,13 @@ import './App.css';
 import './App.css';
 const SERVER_URL = "http://localhost:3008/api/portfolio/"
 
+
+
 function App() {
   const [mergedData, setMergedData] = useState([])
   const [errorMessage, setErrorMessage] = useState("");
-const getMergedData = async () => {
+
+  const getMergedData = async () => {
     try {
       const response = await fetch(
         SERVER_URL
@@ -31,12 +34,6 @@ const getMergedData = async () => {
         console.log(results?.[12])
       })
   }
-
-
-
-  console.log(mergedData.length)
-
-
   useEffect(() => { }, []);
   return (
     <div className="App">
@@ -54,7 +51,6 @@ const getMergedData = async () => {
                     <p
                       key={data?.symbol}
                       blog={data}>
-                      {/* symbol */}
                       {data.symbol + ' ' +
                         (data.regularMarketPrice * data.shares).toFixed(2) +
                         '... you paid ' +
@@ -66,40 +62,13 @@ const getMergedData = async () => {
                             (data.purchasePrice * data.shares)) /
                           (data.purchasePrice * data.shares) * 100).toFixed(2)
                         + '%'}
-                    </p>
-                  ))
+                    </p>))
+                    
                   : <>
                     <h2>No Blogs Yet... Add one in the Form Above</h2>
                   </>
               }
             </div>
-
-
-
-
-            <div>
-              
-              {
-                mergedData && mergedData.length ?
-                  mergedData.map(data => (
-                    <p
-                      key={data?.symbol}
-                      blog={data[16]}>
-                      {
-                        'Symbol: ' + data.symbol + ' - ' +
-                        // 'Price: ' + (data.regularMarketPrice * data.shares).toFixed(2) +
-                        // ' - Paid ' + (data.purchasePrice * data.shares).toFixed(2) +
-                        ' - Change:  ' + (((data.regularMarketPrice * data.shares) - (data.purchasePrice * data.shares)) / (data.purchasePrice * data.shares) * 100).toFixed(2) + '%'
-                      }
-                    </p>
-                  )
-                )
-                  : <>
-                    <h2>No Blogs Yet... Add one in the Form Above</h2>
-                  </>
-              }
-            </div>
-
           </div>
           <div>
           </div>
