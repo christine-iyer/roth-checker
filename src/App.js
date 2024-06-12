@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import TotalGainLoss from './components/TotalGainLoss'
 import './App.css';
 
 import './App.css';
@@ -68,6 +69,7 @@ function App() {
                     <h2>No Blogs Yet... Add one in the Form Above</h2>
                   </>
               }
+        
             </div>
           </div>
           <div>

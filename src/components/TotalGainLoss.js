@@ -1,37 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react';
+import './App.css';
+import StockItem from './StockItem';
 
-function totalMarketPrice(mergedData) {
-  return mergedData.regularMarketPrice * mergedData.shares
+
+
+function calculateTotalMarketValue(stocks) {
+    return stocks.reduce((total, stock) => total + stock.regularMarketPrice * stock.shares, 0).toFixed(2);
 }
 
-function totalPurchasePrice(mergedData) {
-  return mergedData.purchasePrice * mergedData.shares
-}
-function calculateAveragePrice(products) {
-  const total = products.reduce((acc, product) => {
-      return acc + parseFloat((product.regularMarketPrice * product.shares).replace('$', ''));
-  }, 0);
-  return (total / products.length).toFixed(2);
+function calculateTotalGainLoss(stocks) {
+    return stocks.reduce((total, stock) => total + (stock.regularMarketPrice - stock.purchasePrice) * stock.shares, 0).toFixed(2);
 }
 
-function calculateTotalPrice(cart) {
-  const total = cart.reduce((acc, item) => {
-      return acc + parseFloat(item.price.replace('$', ''));
-  }, 0);
-  return total.toFixed(2);
+export default function Total({mergedData}) {
+    const [stocks, setStocks] = useState(mergedData);
+
+    const totalMarketValue = calculateTotalMarketValue(stocks);
+    const totalGainLoss = calculateTotalGainLoss(stocks);
+
+    return (
+        <div className="Total">
+            <header className="Total-header">
+                <h1>Stock Portfolio</h1>
+                <h2>Stocks</h2>
+                <ul>
+                    {stocks.map((stock, index) => (
+                        <StockItem key={index} stock={stock} />
+                    ))}
+                </ul>
+                <h2>Portfolio Summary</h2>
+                <p>Total Market Value: ${totalMarketValue}</p>
+                <p>Total Gain/Loss: ${totalGainLoss}</p>
+            </header>
+        </div>
+    );
 }
-export default function TotalGainLoss({  mergedData }) {
-     return (
-       <>
-       <h4>{mergedData.symbol}</h4>
-       <button onClick={calculateAveragePrice}>See average price</button>
-       <button onClick={calculateTotalPrice}>See total price</button>
-       </>
-     );
-   }
-
-
-
-
 
 
