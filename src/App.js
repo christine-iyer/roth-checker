@@ -64,6 +64,8 @@ function App() {
                           (data.purchasePrice * data.shares) * 100).toFixed(2)
                         + '%'}
                     </p>))
+              
+                    
                     
                   : <>
                     <h2>No Blogs Yet... Add one in the Form Above</h2>
@@ -76,6 +78,7 @@ function App() {
           </div>
         </div>
       </header>
+      <TotalGainLoss/>
     </div>
   );
 }

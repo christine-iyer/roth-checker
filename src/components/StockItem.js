@@ -1,14 +1,14 @@
 import React from 'react';
 
-function StockItem({ mergedData }) {
+function StockItem({ stock }) {
     return (
         <li>
-            <strong>{mergedData.longName} ({mergedData.symbol})</strong><br />
-            Exchange: {mergedData.fullExchangeName}<br />
-            Purchase Date: {mergedData.principalDate}<br />
-            Purchase Price: ${mergedData.purchasePrice}<br />
-            Market Price: ${mergedData.regularMarketPrice}<br />
-            Shares: {mergedData.shares}
+            <strong>{stock.longName} ({stock.symbol})</strong><br />
+            Exchange: {stock.fullExchangeName}<br />
+            Purchase Date: {stock.principalDate}<br />
+            Purchase Price: ${stock.purchasePrice}<br />
+            Market Price: ${stock.regularMarketPrice}<br />
+            Shares: {stock.shares}
         </li>
     );
 }
