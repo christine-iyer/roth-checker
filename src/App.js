@@ -33,6 +33,18 @@ function App() {
         console.log(results?.[12])
       })
   }
+  const calculateTotalPurchasePrice = (data) => {
+    return data.reduce((total, stock) => total + (stock.purchasePrice * stock.shares), 0).toFixed(2);
+  };
+
+  const totalPurchasePrice = calculateTotalPurchasePrice(mergedData);
+
+  const calculateTotalMarketValue = (data) => {
+    return data.reduce((total, stock) => total + (stock.regularMarketPrice * stock.shares), 0).toFixed(2);
+  };
+
+  const totalMarketValue = calculateTotalMarketValue(mergedData);
+
   useEffect(() => { }, []);
   return (
     <div className="App">
@@ -61,10 +73,16 @@ function App() {
                           (data.purchasePrice * data.shares) * 100).toFixed(2)
                         + '%'}
                     </p>))
+                    // <p>Total: ${mergedData?.reduce((total,purchasePrice)=> purchasePrice + total,0 )}</p>
                   : <>
                     <h2>No Blogs Yet... Add one in the Form Above</h2>
                   </>
               }
+            </div>
+            <div>
+              <h3>Total Purchase Price: ${totalPurchasePrice}</h3>
+              <h3>Total Mkt Value: ${totalMarketValue}</h3>
+              <h3>Percent Change: {((totalMarketValue-totalPurchasePrice)/totalPurchasePrice*100).toFixed(2)}%</h3>
             </div>
           </div>
           <div>
