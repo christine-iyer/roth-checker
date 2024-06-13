@@ -61,10 +61,10 @@ function App() {
                     <p
                       key={data?.symbol}
                       blog={data}>
-                      {data.symbol + ' ' +
-                        (data.regularMarketPrice * data.shares).toFixed(2) +
+                      {'Currently '+ data.symbol +  ' is valued at '+
+                        (data.regularMarketPrice * data.shares).toFixed(2).toLocaleString("en-US") +
                         '... you paid ' +
-                        (data.purchasePrice * data.shares).toFixed(2) +
+                        (data.purchasePrice * data.shares).toFixed(2).toLocaleString("en-US") +
                         '... a  ' +
                         (
                           (
@@ -73,7 +73,6 @@ function App() {
                           (data.purchasePrice * data.shares) * 100).toFixed(2)
                         + '%'}
                     </p>))
-                    // <p>Total: ${mergedData?.reduce((total,purchasePrice)=> purchasePrice + total,0 )}</p>
                   : <>
                     <h2>No Blogs Yet... Add one in the Form Above</h2>
                   </>
@@ -89,7 +88,6 @@ function App() {
           </div>
         </div>
       </header>
-      {/* <TotalGainLoss/> */}
     </div>
   );
 }
