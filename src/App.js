@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import TotalGainLoss from './components/TotalGainLoss'
+// import TotalGainLoss from './components/TotalGainLoss'
 import './App.css';
 
 import './App.css';
 const SERVER_URL = "http://localhost:3008/api/portfolio/"
-
-
 
 function App() {
   const [mergedData, setMergedData] = useState([])
@@ -44,7 +42,6 @@ function App() {
         </div>
         <div>
           <div className='cass'>
-
             <div className='happy'>
               {
                 mergedData && mergedData.length
@@ -64,21 +61,17 @@ function App() {
                           (data.purchasePrice * data.shares) * 100).toFixed(2)
                         + '%'}
                     </p>))
-              
-                    
-                    
                   : <>
                     <h2>No Blogs Yet... Add one in the Form Above</h2>
                   </>
               }
-        
             </div>
           </div>
           <div>
           </div>
         </div>
       </header>
-      <TotalGainLoss/>
+      {/* <TotalGainLoss/> */}
     </div>
   );
 }
