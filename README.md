@@ -1,5 +1,10 @@
 ### Plan
 
+June15, 2024
+
+im trying to understand the reduce  array  code chunks by breaking them down. 
+but since i gavr a hard time with abstraction this is a challenge.   
+
 
 | Element      | Eval |MicroTasks|
 | :---        |    :----    |        :--- |
