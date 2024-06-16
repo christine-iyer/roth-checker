@@ -9,6 +9,7 @@ const SERVER_URL = "http://localhost:3008/api/portfolio/"
 function App() {
   const [mergedData, setMergedData] = useState([])
   const [errorMessage, setErrorMessage] = useState("");
+  const [showTotalChange, setShowTotalChange] = useState(0)
 
   const getMergedData = async () => {
     try {
@@ -40,7 +41,7 @@ function App() {
   const totalPurchasePrice = calculateTotalPurchasePrice(mergedData);
 
   const calculateTotalMarketValue = (data) => {
-    return data.reduce((total, stock) => total + (stock.regularMarketPrice * stock.shares), 0).toFixed(2);
+    return data.reduce((total, stock) => total + (stock.regularMarketPrice * stock.shares), 0).toFixed(2).toLocaleString();
   };
 
   const totalMarketValue = calculateTotalMarketValue(mergedData);
@@ -50,7 +51,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div>
-          <button type='submit' onClick={getMergedData}>Click to prompt the Server to get current stock prices</button>
+          <label>Click to prompt the Server to get current stock prices</label>
+          <button type='submit' onClick={getMergedData}></button>
         </div>
         <div>
           <div className='cass'>
@@ -81,6 +83,10 @@ function App() {
             <div>
               <h3>Total Purchase Price: ${totalPurchasePrice}</h3>
               <h3>Total Mkt Value: ${totalMarketValue}</h3>
+              <label>Click to prompt the Server to your overall percent change.</label>
+
+          <button type='submit' onClick={showTotalChange}></button>
+
               <h3>Percent Change: {((totalMarketValue-totalPurchasePrice)/totalPurchasePrice*100).toFixed(2)}%</h3>
             </div>
           </div>

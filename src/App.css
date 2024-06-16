@@ -32,9 +32,12 @@ button {
   color: orange;
   text-decoration: wavy;
   text-shadow: 1px 1px 1px black;
-  font-size: 2.8em;
+
   background: rgba(193, 235, 187, .9);
   border-radius: 25%;
+  padding: 10px;
+  height:80px;
+  width:80px;
 
 }
 
