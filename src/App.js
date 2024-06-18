@@ -32,14 +32,18 @@ function App() {
     const percentChange = ((totalMarketValue - totalPurchasePrice) / totalPurchasePrice) * 100;
     return percentChange.toFixed(2);
   };
+  
 
   const handlePercentChangeClick = () => {
     const percentChange = calculateTotalPercentChange(mergedData);
     setTotalPercentChange(percentChange);
     setShowPercentChange(true);
   };
+  const formatDollarAmount = (amount) => {
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
+  };
 
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
 
   const totalPurchasePrice = calculateTotalPurchasePrice(mergedData);
   const totalMarketValue = mergedData.reduce((total, stock) => total + (stock.regularMarketPrice * stock.shares), 0).toFixed(2);
@@ -48,14 +52,14 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div>
-          <button type='submit'  onClick={getMergedData}> $
-             
+          <button type='submit' onClick={getMergedData}> $
+
           </button>
         </div>
         <div>
           <div className='cass'>
             <div className='happy'>
-         {mergedData && mergedData.length ? (
+              {mergedData && mergedData.length ? (
                 mergedData.map(data => (
                   <p key={data?.symbol} blog={data}>
                     {data.symbol + ' ' +
@@ -74,13 +78,13 @@ function App() {
                   </p>
                 ))
               ) : (
-                <h2>No Stocks Yet... Add one in the Form Above</h2>
+                <h2>Click $ for your portfolio</h2>
               )}
             </div>
             <div>
-            <h3>Total Purchase Price: ${totalPurchasePrice}</h3>
-              <h3>Total Market Value: ${totalMarketValue}</h3>
-              
+              <h3>Total Purchase Price: {formatDollarAmount(totalPurchasePrice)}</h3>
+              <h3>Total Market Value: {formatDollarAmount(totalMarketValue)}</h3>
+
             </div>
             <div>
               <button onClick={handlePercentChangeClick}>
@@ -88,7 +92,6 @@ function App() {
               </button>
               {showPercentChange && (
                 <h3>{totalPercentChange}%</h3>
-
               )}
             </div>
           </div>
